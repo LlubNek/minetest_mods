@@ -3,7 +3,8 @@
 
 -- Node will be called stairs:stair_<subname>
 function stairs.register_stair(subname, recipeitem, groups, images, description)
-    minetest.register_node(minetest.get_current_modname()..":stair_" .. subname, {
+    local name = minetest.get_current_modname()..":stair_" .. subname
+    minetest.register_node(name, {
         description = description,
         drawtype = "nodebox",
         tiles = images,
@@ -21,7 +22,7 @@ function stairs.register_stair(subname, recipeitem, groups, images, description)
     })
 
     minetest.register_craft({
-        output = minetest.get_current_modname()..':stair_' .. subname .. ' 4',
+        output = name .. ' 4',
         recipe = {
             {recipeitem, "", ""},
             {recipeitem, recipeitem, ""},
@@ -31,7 +32,7 @@ function stairs.register_stair(subname, recipeitem, groups, images, description)
 
     -- Flipped recipe for the silly minecrafters
     minetest.register_craft({
-        output = minetest.get_current_modname()..':stair_' .. subname .. ' 4',
+        output = name .. ' 4',
         recipe = {
             {"", "", recipeitem},
             {"", recipeitem, recipeitem},
@@ -42,7 +43,9 @@ end
 
 -- Node will be called stairs:slab_<subname>
 function stairs.register_slab(subname, recipeitem, groups, images, description)
-    minetest.register_node(minetest.get_current_modname()..":slab_" .. subname, {
+    local name = minetest.get_current_modname()..":slab_" .. subname
+
+    minetest.register_node(name, {
         description = description,
         drawtype = "nodebox",
         tiles = images,
@@ -70,10 +73,10 @@ function stairs.register_slab(subname, recipeitem, groups, images, description)
             local p1 = pointed_thing.above
             local n0 = minetest.env:get_node(p0)
             local n1 = minetest.env:get_node(p1)
-            if n0.name == minetest.get_current_modname()..":slab_" .. subname then
+            if n0.name == name then
                 slabpos = p0
                 slabnode = n0
-            elseif n1.name == minetest.get_current_modname()..":slab_" .. subname then
+            elseif n1.name == name then
                 slabpos = p1
                 slabnode = n1
             end
@@ -100,7 +103,7 @@ function stairs.register_slab(subname, recipeitem, groups, images, description)
     })
 
     minetest.register_craft({
-        output = minetest.get_current_modname()..':slab_' .. subname .. ' 3',
+        output = name .. ' 3',
         recipe = {
             {recipeitem, recipeitem, recipeitem},
         },
