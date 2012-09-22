@@ -3,6 +3,7 @@ minetest_mods
 
 Various mods for minetest.
 
+Copyright (C) 2012 Ken Bull <llubnek@gmail.com>
 For mods without their own README, consider these CC0 or WTFPL.
 
 
